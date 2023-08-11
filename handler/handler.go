@@ -11,7 +11,7 @@ var (
 )
 
 
-func Init(){
+func InitHandler(){
 	logger = config.GetLogger("handler")
 	db = config.GetSQLite()
 }
