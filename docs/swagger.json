@@ -1,0 +1,339 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/opening": {
+            "post": {
+                "description": "Create a new Job opening",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Openings"
+                ],
+                "parameters": [
+                    {
+                        "description": "Request body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/handler.CreateOpeningRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.CreateOpeningResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/handler.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/handler.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a Job opening",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Openings"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Opening indentification",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.DeleteOpeningResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/handler.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/handler.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/opening/{id}": {
+            "get": {
+                "description": "Show a Job opening",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Openings"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Opening indentification",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.ShowOpeningResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/handler.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/handler.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update a Job opening",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Openings"
+                ],
+                "parameters": [
+                    {
+                        "description": "Request body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/handler.CreateOpeningRequest"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "Opening indentification",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.UpdateOpeningResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/handler.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/handler.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/openings": {
+            "get": {
+                "description": "List a Job opening",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Openings"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.ShowOpeningResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/handler.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/handler.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "handler.CreateOpeningRequest": {
+            "type": "object",
+            "properties": {
+                "company": {
+                    "type": "string"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "remote": {
+                    "type": "boolean"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "salary": {
+                    "type": "integer"
+                }
+            }
+        },
+        "handler.CreateOpeningResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.OpeningResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "handler.DeleteOpeningResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.OpeningResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "handler.ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "errorCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "handler.ShowOpeningResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/schemas.OpeningResponse"
+                    }
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "handler.UpdateOpeningResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.OpeningResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "schemas.OpeningResponse": {
+            "type": "object",
+            "properties": {
+                "company": {
+                    "type": "string"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "deletedAt": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "remote": {
+                    "type": "boolean"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "salary": {
+                    "type": "integer"
+                },
+                "updatedAt": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
