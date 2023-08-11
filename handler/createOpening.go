@@ -5,7 +5,5 @@ import (
 )
 
 func CreateOpeningHandler(cxt *gin.Context){
-	cxt.JSON(200, gin.H{
-		"message": "hello GET",
-	})
+
 }

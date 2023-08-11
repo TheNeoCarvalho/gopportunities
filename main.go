@@ -1,7 +1,8 @@
-package main 
+package main
+
 import (
-	"github.com/TheNeoCarvalho/gopportunities/router"
 	"github.com/TheNeoCarvalho/gopportunities/config"
+	"github.com/TheNeoCarvalho/gopportunities/router"
 )
 
 var (
